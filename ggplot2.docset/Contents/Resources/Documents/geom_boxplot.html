@@ -1,0 +1,332 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8"/>
+<title>geom_boxplot. ggplot2 1.0.1.9003</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="author" content=""/>
+
+<link href="css/bootstrap.css" rel="stylesheet"/>
+<link href="css/bootstrap-responsive.css" rel="stylesheet"/>
+<link href="css/highlight.css" rel="stylesheet"/>
+<link href="css/staticdocs.css" rel="stylesheet"/>
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-67989-15']);
+  _gaq.push(['_setDomainName', 'ggplot2.org']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">ggplot2 1.0.1.9003</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Box and whiskers plot.</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><div>geom_boxplot(mapping = NULL, data = NULL, stat = &#34;boxplot&#34;, position = &#34;dodge&#34;, outlier.colour = &#34;black&#34;, outlier.shape = 19, outlier.size = 1.5, outlier.stroke = 0.5, notch = FALSE, notchwidth = 0.5, varwidth = FALSE, show.legend = NA, inherit.aes = TRUE, ...)</div>
+<div>stat_boxplot(mapping = NULL, data = NULL, geom = &#34;boxplot&#34;, position = &#34;dodge&#34;, na.rm = FALSE, coef = 1.5, show.legend = NA, inherit.aes = TRUE, ...)</div></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>mapping</dt>
+      <dd>Set of aesthetic mappings created by <code><a class="dashingAutolink" name="autolink-74"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/aes"></a><a href="aes.html">aes</a></code> or
+<code><a class="dashingAutolink" name="autolink-75"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/aes_"></a><a href="aes_.html">aes_</a></code>. If specified and <code>inherit.aes = TRUE</code> (the
+default), is combined with the default mapping at the top level of the
+plot. You only need to supply <code>mapping</code> if there isn&#39;t a mapping
+defined for the plot.</dd>
+      <dt>data</dt>
+      <dd>A data frame. If specified, overrides the default data frame
+defined at the top level of the plot.</dd>
+      <dt>position</dt>
+      <dd>Position adjustment, either as a string, or the result of
+a call to a position adjustment function.</dd>
+      <dt>outlier.colour</dt>
+      <dd>Override aesthetics used for the outliers. Defaults
+come from <code>geom_point()</code>.</dd>
+      <dt>outlier.shape</dt>
+      <dd>Override aesthetics used for the outliers. Defaults
+come from <code>geom_point()</code>.</dd>
+      <dt>outlier.size</dt>
+      <dd>Override aesthetics used for the outliers. Defaults
+come from <code>geom_point()</code>.</dd>
+      <dt>outlier.stroke</dt>
+      <dd>Override aesthetics used for the outliers. Defaults
+come from <code>geom_point()</code>.</dd>
+      <dt>notch</dt>
+      <dd>if <code>FALSE</code> (default) make a standard box plot. If
+<code>TRUE</code>, make a notched box plot. Notches are used to compare groups;
+if the notches of two boxes do not overlap, this suggests that the medians
+are significantly different.</dd>
+      <dt>notchwidth</dt>
+      <dd>for a notched box plot, width of the notch relative to
+the body (default 0.5)</dd>
+      <dt>varwidth</dt>
+      <dd>if <code>FALSE</code> (default) make a standard box plot. If
+<code>TRUE</code>, boxes are drawn with widths proportional to the
+square-roots of the number of observations in the groups (possibly
+weighted, using the <code>weight</code> aesthetic).</dd>
+      <dt>show.legend</dt>
+      <dd>logical. Should this layer be included in the legends?
+<code>NA</code>, the default, includes if any aesthetics are mapped.
+<code>FALSE</code> never includes, and <code>TRUE</code> always includes.</dd>
+      <dt>inherit.aes</dt>
+      <dd>If <code>FALSE</code>, overrides the default aesthetics,
+rather than combining with them. This is most useful for helper functions
+that define both data and aesthetics and shouldn&#39;t inherit behaviour from
+the default plot specification, e.g. <code><a class="dashingAutolink" name="autolink-76"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/borders"></a><a href="borders.html">borders</a></code>.</dd>
+      <dt>...</dt>
+      <dd>other arguments passed on to <code><a class="dashingAutolink" name="autolink-77"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/layer"></a><a href="layer.html">layer</a></code>. There are
+  three types of arguments you can use here:
+
+  <ul>
+<li> Aesthetics: to set an aesthetic to a fixed value, like
+     <code>color = &#34;red&#34;</code> or <code>size = 3</code>.
+  </li>
+<li> Other arguments to the layer, for example you override the
+    default <code>stat</code> associated with the layer.
+  </li>
+<li> Other arguments passed on to the stat.
+  </li>
+</ul>
+</dd>
+      <dt>geom,stat</dt>
+      <dd>Use to override the default connection between
+<code>geom_boxplot</code> and <code>stat_boxplot</code>.</dd>
+      <dt>na.rm</dt>
+      <dd>If <code>FALSE</code> (the default), removes missing values with
+a warning.  If <code>TRUE</code> silently removes missing values.</dd>
+      <dt>coef</dt>
+      <dd>length of the whiskers as multiple of IQR.  Defaults to 1.5</dd>
+    </dl>
+    
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>The lower and upper &#34;hinges&#34; correspond to the first and third quartiles
+(the 25th and 75th percentiles). This differs slightly from the method used
+by the <code>boxplot</code> function, and may be apparent with small samples.
+See <code><a class="dashingAutolink" name="autolink-78"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/boxplot.stats"></a><a href="http://www.inside-r.org/r-doc/grDevices/boxplot.stats">boxplot.stats</a></code> for for more information on how hinge
+positions are calculated for <code>boxplot</code>.</p>
+  
+    </div>
+
+    <div class="Details">
+      <h2>Details</h2>
+
+      <p>The upper whisker extends from the hinge to the highest value that is within
+1.5 * IQR of the hinge, where IQR is the inter-quartile range, or distance
+between the first and third quartiles. The lower whisker extends from the
+hinge to the lowest value within 1.5 * IQR of the hinge. Data beyond the
+end of the whiskers are outliers and plotted as points (as specified by Tukey).</p>
+  
+      <p>In a notched box plot, the notches extend <code>1.58 * IQR / sqrt(n)</code>.
+This gives a roughly 95
+See McGill et al. (1978) for more details.</p>
+  
+    </div>
+
+    <div class="Aesthetics">
+      <h2>Aesthetics</h2>
+
+      <p></p>
+  
+      <p><code>geom_boxplot</code> understands the following aesthetics (required aesthetics are in bold):</p>
+  
+      <p></p><ul>
+<li> <code><strong>lower</strong></code>
+  </li>
+<li> <code><strong>middle</strong></code>
+  </li>
+<li> <code><strong>upper</strong></code>
+  </li>
+<li> <code><strong>x</strong></code>
+  </li>
+<li> <code><strong>ymax</strong></code>
+  </li>
+<li> <code><strong>ymin</strong></code>
+  </li>
+<li> <code>alpha</code>
+  </li>
+<li> <code>colour</code>
+  </li>
+<li> <code>fill</code>
+  </li>
+<li> <code>linetype</code>
+  </li>
+<li> <code>outlier.colour</code>
+  </li>
+<li> <code>outlier.shape</code>
+  </li>
+<li> <code>outlier.size</code>
+  </li>
+<li> <code>outlier.stroke</code>
+  </li>
+<li> <code>shape</code>
+  </li>
+<li> <code>size</code>
+  </li>
+<li> <code>weight</code>
+</li>
+</ul><p></p>
+  
+      <p></p>
+  
+    </div>
+
+    <div class="Computed variables">
+      <h2>Computed variables</h2>
+
+      <p></p>
+  
+      <p></p><dl>
+  <dt>width</dt><dd>width of boxplot</dd><p></p>
+  
+      <p></p><dt>ymin</dt><dd>lower whisker = smallest observation greater than or equal to lower hinge - 1.5 * IQR</dd><p></p>
+  
+      <p></p><dt>lower</dt><dd>lower hinge, 25% quantile</dd><p></p>
+  
+      <p></p><dt>notchlower</dt><dd>lower edge of notch = median - 1.58 * IQR / sqrt(n)</dd><p></p>
+  
+      <p></p><dt>middle</dt><dd>median, 50% quantile</dd><p></p>
+  
+      <p></p><dt>notchupper</dt><dd>upper edge of notch = median + 1.58 * IQR / sqrt(n)</dd><p></p>
+  
+      <p></p><dt>upper</dt><dd>upper hinge, 75% quantile</dd><p></p>
+  
+      <p></p><dt>ymax</dt><dd>upper whisker = largest observation less than or equal to upper hinge + 1.5 * IQR</dd><p></p>
+  
+      <p></p></dl><p></p>
+  
+      <p></p>
+  
+    </div>
+
+    <div class="References">
+      <h2>References</h2>
+
+      <p>McGill, R., Tukey, J. W. and Larsen, W. A. (1978) Variations of
+    box plots. The American Statistician 32, 12-16.</p>
+  
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class="input">p &lt;- ggplot(mpg, aes(class, hwy))
+p + geom_boxplot()
+</div>
+<p><img src="geom_boxplot-2.png" alt="" width="540" height="400"/></p>
+<div class="input">p + geom_boxplot() + geom_jitter(width = 0.2)
+</div>
+<p><img src="geom_boxplot-4.png" alt="" width="540" height="400"/></p>
+<div class="input">p + geom_boxplot() + coord_flip()
+</div>
+<p><img src="geom_boxplot-6.png" alt="" width="540" height="400"/></p>
+<div class="input">
+p + geom_boxplot(notch = TRUE)
+</div>
+<strong class="message">notch went outside hinges. Try setting notch=FALSE.</strong>
+<strong class="message">notch went outside hinges. Try setting notch=FALSE.</strong>
+<p><img src="geom_boxplot-10.png" alt="" width="540" height="400"/></p>
+<div class="input">p + geom_boxplot(varwidth = TRUE)
+</div>
+<p><img src="geom_boxplot-12.png" alt="" width="540" height="400"/></p>
+<div class="input">p + geom_boxplot(fill = &#34;white&#34;, colour = &#34;#3366FF&#34;)
+</div>
+<p><img src="geom_boxplot-14.png" alt="" width="540" height="400"/></p>
+<div class="input">p + geom_boxplot(outlier.colour = &#34;red&#34;, outlier.shape = 1)
+</div>
+<p><img src="geom_boxplot-16.png" alt="" width="540" height="400"/></p>
+<div class="input">
+# Boxplots are automatically dodged when any aesthetic is a factor
+p + geom_boxplot(aes(fill = drv))
+</div>
+<p><img src="geom_boxplot-18.png" alt="" width="540" height="400"/></p>
+<div class="input">
+# You can also use boxplots with continuous x, as long as you supply
+# a grouping variable. cut_width is particularly useful
+ggplot(diamonds, aes(carat, price)) +
+  geom_boxplot()
+</div>
+<p><img src="geom_boxplot-20.png" alt="" width="540" height="400"/></p>
+<div class="input">ggplot(diamonds, aes(carat, price)) +
+  geom_boxplot(aes(group = cut_width(carat, 0.25)))
+</div>
+<p><img src="geom_boxplot-22.png" alt="" width="540" height="400"/></p>
+<div class="input">
+
+# It&#39;s possible to draw a boxplot with your own computations if you
+# use stat = &#34;identity&#34;:
+y &lt;- rnorm(100)
+df &lt;- data.frame(
+  x = 1,
+  y0 = min(y),
+  y25 = quantile(y, 0.25),
+  y50 = median(y),
+  y75 = quantile(y, 0.75),
+  y100 = max(y)
+)
+ggplot(df, aes(x)) +
+  geom_boxplot(
+   aes(ymin = y0, lower = y25, middle = y50, upper = y75, ymax = y100),
+   stat = &#34;identity&#34;
+ )
+</div>
+<p><img src="geom_boxplot-24.png" alt="" width="540" height="400"/></p>
+<div class="input"></div></pre>
+  </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>geom_boxplot</li><li>stat_boxplot</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+      
+    <h2>See also</h2>
+    
+<code><a class="dashingAutolink" name="autolink-79"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/stat_quantile"></a><a href="geom_quantile.html">stat_quantile</a></code> to view quantiles conditioned on a
+  continuous variable, <code><a class="dashingAutolink" name="autolink-80"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/geom_jitter"></a><a href="geom_jitter.html">geom_jitter</a></code> for another way to look
+  at conditional distributions.
+
+        
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+
+<p class="feedback">What do you think of the documentation?  <a href="http://hadley.wufoo.com/forms/documentation-feedback/def/field0=geom_boxplot">Please let me know by filling out this short online survey</a>.</p>
+
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  
+</body></html>

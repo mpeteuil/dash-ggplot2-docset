@@ -1,0 +1,133 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8"/>
+<title>scale_colour_grey. ggplot2 1.0.1.9003</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="author" content=""/>
+
+<link href="css/bootstrap.css" rel="stylesheet"/>
+<link href="css/bootstrap-responsive.css" rel="stylesheet"/>
+<link href="css/highlight.css" rel="stylesheet"/>
+<link href="css/staticdocs.css" rel="stylesheet"/>
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-67989-15']);
+  _gaq.push(['_setDomainName', 'ggplot2.org']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">ggplot2 1.0.1.9003</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Sequential grey colour scale.</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><div>scale_colour_grey(..., start = 0.2, end = 0.8, na.value = &#34;red&#34;)</div>
+<div>scale_fill_grey(..., start = 0.2, end = 0.8, na.value = &#34;red&#34;)</div></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>...</dt>
+      <dd>Other arguments passed on to <code><a class="dashingAutolink" name="autolink-505"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/discrete_scale"></a><a href="discrete_scale.html">discrete_scale</a></code>
+to control name, limits, breaks, labels and so forth.</dd>
+      <dt>start</dt>
+      <dd>gray value at low end of palette</dd>
+      <dt>end</dt>
+      <dd>gray value at high end of palette</dd>
+      <dt>na.value</dt>
+      <dd>Colour to use for missing values</dd>
+    </dl>
+    
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Based on <code><a class="dashingAutolink" name="autolink-506"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/gray.colors"></a><a href="http://www.inside-r.org/r-doc/grDevices/gray.colors">gray.colors</a></code></p>
+  
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class="input">p &lt;- ggplot(mtcars, aes(mpg, wt)) + geom_point(aes(colour = factor(cyl)))
+p + scale_colour_grey()
+</div>
+<p><img src="scale_grey-2.png" alt="" width="540" height="400"/></p>
+<div class="input">p + scale_colour_grey(end = 0)
+</div>
+<p><img src="scale_grey-4.png" alt="" width="540" height="400"/></p>
+<div class="input">
+# You may want to turn off the pale grey background with this scale
+p + scale_colour_grey() + theme_bw()
+</div>
+<p><img src="scale_grey-6.png" alt="" width="540" height="400"/></p>
+<div class="input">
+# Colour of missing values is controlled with na.value:
+miss &lt;- factor(sample(c(NA, 1:5), nrow(mtcars), replace = TRUE))
+ggplot(mtcars, aes(mpg, wt)) +
+  geom_point(aes(colour = miss)) +
+  scale_colour_grey()
+</div>
+<p><img src="scale_grey-8.png" alt="" width="540" height="400"/></p>
+<div class="input">ggplot(mtcars, aes(mpg, wt)) +
+  geom_point(aes(colour = miss)) +
+  scale_colour_grey(na.value = &#34;green&#34;)
+</div>
+<p><img src="scale_grey-10.png" alt="" width="540" height="400"/></p></pre>
+  </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>scale_color_grey</li><li>scale_colour_grey</li><li>scale_fill_grey</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+      
+    <h2>See also</h2>
+    
+Other colour scales:
+  <code><a class="dashingAutolink" name="autolink-507"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/scale_colour_brewer"></a><a href="scale_brewer.html">scale_colour_brewer</a></code>,
+  <code><a class="dashingAutolink" name="autolink-508"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/scale_colour_gradient"></a><a href="scale_gradient.html">scale_colour_gradient</a></code>,
+  <code><a class="dashingAutolink" name="autolink-509"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/scale_colour_hue"></a><a href="scale_hue.html">scale_colour_hue</a></code>
+
+        
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+
+<p class="feedback">What do you think of the documentation?  <a href="http://hadley.wufoo.com/forms/documentation-feedback/def/field0=scale_colour_grey">Please let me know by filling out this short online survey</a>.</p>
+
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  
+</body></html>

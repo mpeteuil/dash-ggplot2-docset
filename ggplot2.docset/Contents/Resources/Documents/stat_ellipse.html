@@ -1,0 +1,172 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8"/>
+<title>stat_ellipse. ggplot2 1.0.1.9003</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="author" content=""/>
+
+<link href="css/bootstrap.css" rel="stylesheet"/>
+<link href="css/bootstrap-responsive.css" rel="stylesheet"/>
+<link href="css/highlight.css" rel="stylesheet"/>
+<link href="css/staticdocs.css" rel="stylesheet"/>
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-67989-15']);
+  _gaq.push(['_setDomainName', 'ggplot2.org']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">ggplot2 1.0.1.9003</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Plot data ellipses.</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><div>stat_ellipse(mapping = NULL, data = NULL, geom = &#34;path&#34;, position = &#34;identity&#34;, type = &#34;t&#34;, level = 0.95, segments = 51, na.rm = FALSE, show.legend = NA, inherit.aes = TRUE, ...)</div></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>mapping</dt>
+      <dd>The aesthetic mapping, usually constructed with
+<code><a class="dashingAutolink" name="autolink-528"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/aes"></a><a href="aes.html">aes</a></code> or <code><a class="dashingAutolink" name="autolink-529"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/aes_string"></a><a href="aes_.html">aes_string</a></code>. Only needs to be set
+at the layer level if you are overriding the plot defaults.</dd>
+      <dt>data</dt>
+      <dd>A layer specific dataset - only needed if you want to override
+the plot defaults.</dd>
+      <dt>geom</dt>
+      <dd>The geometric object to use display the data</dd>
+      <dt>position</dt>
+      <dd>The position adjustment to use for overlapping points
+on this layer</dd>
+      <dt>type</dt>
+      <dd>The type of ellipse.
+The default <code>&#34;t&#34;</code> assumes a multivariate t-distribution, and
+<code>&#34;norm&#34;</code> assumes a multivariate normal distribution.
+<code>&#34;euclid&#34;</code> draws a circle with the radius equal to <code>level</code>,
+representing the euclidean distance from the center.
+This ellipse probably won&#39;t appear circular unless <code>coord_fixed()</code> is applied.</dd>
+      <dt>level</dt>
+      <dd>The confidence level at which to draw an ellipse (default is 0.95),
+or, if <code>type=&#34;euclid&#34;</code>, the radius of the circle to be drawn.</dd>
+      <dt>segments</dt>
+      <dd>The number of segments to be used in drawing the ellipse.</dd>
+      <dt>na.rm</dt>
+      <dd>If <code>FALSE</code> (the default), removes missing values with
+a warning.  If <code>TRUE</code> silently removes missing values.</dd>
+      <dt>show.legend</dt>
+      <dd>logical. Should this layer be included in the legends?
+<code>NA</code>, the default, includes if any aesthetics are mapped.
+<code>FALSE</code> never includes, and <code>TRUE</code> always includes.</dd>
+      <dt>inherit.aes</dt>
+      <dd>If <code>FALSE</code>, overrides the default aesthetics,
+rather than combining with them. This is most useful for helper functions
+that define both data and aesthetics and shouldn&#39;t inherit behaviour from
+the default plot specification, e.g. <code><a class="dashingAutolink" name="autolink-530"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/borders"></a><a href="borders.html">borders</a></code>.</dd>
+      <dt>...</dt>
+      <dd>other arguments passed on to <code><a class="dashingAutolink" name="autolink-531"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/layer"></a><a href="layer.html">layer</a></code>. This can
+include aesthetics whose values you want to set, not map. See
+<code><a class="dashingAutolink" name="autolink-532"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/layer"></a><a href="layer.html">layer</a></code> for more details.</dd>
+    </dl>
+    
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>The method for calculating the ellipses has been modified from
+<code>car::ellipse</code> (Fox and Weisberg, 2011)</p>
+  
+    </div>
+
+    <div class="References">
+      <h2>References</h2>
+
+      <p>John Fox and Sanford Weisberg (2011). An R Companion to
+  Applied Regression, Second Edition. Thousand Oaks CA: Sage. URL:
+  <a href="http://socserv.socsci.mcmaster.ca/jfox/Books/Companion">http://socserv.socsci.mcmaster.ca/jfox/Books/Companion</a></p>
+  
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class="input">ggplot(faithful, aes(waiting, eruptions)) +
+  geom_point() +
+  stat_ellipse()
+</div>
+<p><img src="stat_ellipse-2.png" alt="" width="540" height="400"/></p>
+<div class="input">
+ggplot(faithful, aes(waiting, eruptions, color = eruptions &gt; 3)) +
+  geom_point() +
+  stat_ellipse()
+</div>
+<p><img src="stat_ellipse-4.png" alt="" width="540" height="400"/></p>
+<div class="input">
+ggplot(faithful, aes(waiting, eruptions, color = eruptions &gt; 3)) +
+  geom_point() +
+  stat_ellipse(type = &#34;norm&#34;, linetype = 2) +
+  stat_ellipse(type = &#34;t&#34;)
+</div>
+<p><img src="stat_ellipse-6.png" alt="" width="540" height="400"/></p>
+<div class="input">
+ggplot(faithful, aes(waiting, eruptions, color = eruptions &gt; 3)) +
+  geom_point() +
+  stat_ellipse(type = &#34;norm&#34;, linetype = 2) +
+  stat_ellipse(type = &#34;euclid&#34;, level = 3) +
+  coord_fixed()
+</div>
+<p><img src="stat_ellipse-8.png" alt="" width="540" height="400"/></p>
+<div class="input">
+ggplot(faithful, aes(waiting, eruptions, fill = eruptions &gt; 3)) +
+  stat_ellipse(geom = &#34;polygon&#34;)
+</div>
+<p><img src="stat_ellipse-10.png" alt="" width="540" height="400"/></p></pre>
+  </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>stat_ellipse</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+      
+        
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+
+<p class="feedback">What do you think of the documentation?  <a href="http://hadley.wufoo.com/forms/documentation-feedback/def/field0=stat_ellipse">Please let me know by filling out this short online survey</a>.</p>
+
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  
+</body></html>

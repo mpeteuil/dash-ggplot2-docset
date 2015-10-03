@@ -1,0 +1,367 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8"/>
+<title>stat_summary_bin. ggplot2 1.0.1.9003</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="author" content=""/>
+
+<link href="css/bootstrap.css" rel="stylesheet"/>
+<link href="css/bootstrap-responsive.css" rel="stylesheet"/>
+<link href="css/highlight.css" rel="stylesheet"/>
+<link href="css/staticdocs.css" rel="stylesheet"/>
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-67989-15']);
+  _gaq.push(['_setDomainName', 'ggplot2.org']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">ggplot2 1.0.1.9003</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Summarise y values at unique/binned x x.</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><div>stat_summary_bin(mapping = NULL, data = NULL, geom = &#34;pointrange&#34;, fun.data = NULL, fun.y = NULL, fun.ymax = NULL, fun.ymin = NULL, fun.args = list(), na.rm = FALSE, position = &#34;identity&#34;, show.legend = NA, inherit.aes = TRUE, ...)</div>
+<div>stat_summary(mapping = NULL, data = NULL, geom = &#34;pointrange&#34;, fun.data = NULL, fun.y = NULL, fun.ymax = NULL, fun.ymin = NULL, fun.args = list(), na.rm = FALSE, position = &#34;identity&#34;, show.legend = NA, inherit.aes = TRUE, ...)</div></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>mapping</dt>
+      <dd>Set of aesthetic mappings created by <code><a class="dashingAutolink" name="autolink-548"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/aes"></a><a href="aes.html">aes</a></code> or
+<code><a class="dashingAutolink" name="autolink-549"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/aes_"></a><a href="aes_.html">aes_</a></code>. If specified and <code>inherit.aes = TRUE</code> (the
+default), is combined with the default mapping at the top level of the
+plot. You only need to supply <code>mapping</code> if there isn&#39;t a mapping
+defined for the plot.</dd>
+      <dt>data</dt>
+      <dd>A data frame. If specified, overrides the default data frame
+defined at the top level of the plot.</dd>
+      <dt>geom</dt>
+      <dd>Use to override the default connection between
+<code>geom_histogram</code>/<code>geom_freqpoly</code> and <code>stat_bin</code>.</dd>
+      <dt>fun.data</dt>
+      <dd>A function that is given the complete data and should
+return a data frame with variables <code>ymin</code>, <code>y</code>, and <code>ymax</code>.</dd>
+      <dt>fun.ymin,fun.y,fun.ymax</dt>
+      <dd>Alternatively, supply three individual
+functions that are each passed a vector of x&#39;s and should return a
+single number.</dd>
+      <dt>fun.args</dt>
+      <dd>Optional additional arguments passed on to the functions.</dd>
+      <dt>na.rm</dt>
+      <dd>If <code>TRUE</code>, silently remove missing values.</dd>
+      <dt>position</dt>
+      <dd>Position adjustment, either as a string, or the result of
+a call to a position adjustment function.</dd>
+      <dt>show.legend</dt>
+      <dd>logical. Should this layer be included in the legends?
+<code>NA</code>, the default, includes if any aesthetics are mapped.
+<code>FALSE</code> never includes, and <code>TRUE</code> always includes.</dd>
+      <dt>inherit.aes</dt>
+      <dd>If <code>FALSE</code>, overrides the default aesthetics,
+rather than combining with them. This is most useful for helper functions
+that define both data and aesthetics and shouldn&#39;t inherit behaviour from
+the default plot specification, e.g. <code><a class="dashingAutolink" name="autolink-550"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/borders"></a><a href="borders.html">borders</a></code>.</dd>
+      <dt>...</dt>
+      <dd>other arguments passed on to <code><a class="dashingAutolink" name="autolink-551"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/layer"></a><a href="layer.html">layer</a></code>. There are
+  three types of arguments you can use here:
+
+  <ul>
+<li> Aesthetics: to set an aesthetic to a fixed value, like
+     <code>color = &#34;red&#34;</code> or <code>size = 3</code>.
+  </li>
+<li> Other arguments to the layer, for example you override the
+    default <code>stat</code> associated with the layer.
+  </li>
+<li> Other arguments passed on to the stat.
+  </li>
+</ul>
+</dd>
+    </dl>
+    
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p><code>stat_summary</code> operates on unique <code>x</code>; <code>stat_summary_bin</code>
+operators on binned <code>x</code>. They are more flexible versions of
+<code><a class="dashingAutolink" name="autolink-552"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/stat_bin"></a><a href="geom_histogram.html">stat_bin</a></code>: instead of just counting, the can compute any
+aggregate.</p>
+  
+    </div>
+
+    <div class="Aesthetics">
+      <h2>Aesthetics</h2>
+
+      <p></p>
+  
+      <p><code>stat_summary</code> understands the following aesthetics (required aesthetics are in bold):</p>
+  
+      <p></p><ul>
+<li> <code><strong>x</strong></code>
+  </li>
+<li> <code><strong>y</strong></code>
+</li>
+</ul><p></p>
+  
+      <p></p>
+  
+    </div>
+
+    <div class="Summary functions">
+      <h2>Summary functions</h2>
+
+      <p></p>
+  
+      <p>You can either supply summary functions individually (<code>fun.y</code>,
+<code>fun.ymax</code>, <code>fun.ymin</code>), or as a single function (<code>fun.data</code>):</p>
+  
+      <p></p><dl>
+  <dt>fun.data</dt><dd>Complete summary function. Should take numeric vector as
+     input and return data frame as output</dd><p></p>
+  
+      <p></p><dt>fun.ymin</dt><dd>ymin summary function (should take numeric vector and
+    return single number)</dd><p></p>
+  
+      <p></p><dt>fun.y</dt><dd>y summary function (should take numeric vector and return
+    single number)</dd><p></p>
+  
+      <p></p><dt>fun.ymax</dt><dd>ymax summary function (should take numeric vector and
+    return single number)</dd><p></p>
+  
+      <p></p></dl><p></p>
+  
+      <p>A simple vector function is easiest to work with as you can return a single
+number, but is somewhat less flexible. If your summary function computes
+multiple values at once (e.g. ymin and ymax), use <code>fun.data</code>.</p>
+  
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class="input">d &lt;- ggplot(mtcars, aes(cyl, mpg)) + geom_point()
+d + stat_summary(fun.data = &#34;mean_cl_boot&#34;, colour = &#34;red&#34;, size = 2)
+</div>
+<p><img src="stat_summary-2.png" alt="" width="540" height="400"/></p>
+<div class="input">
+# You can supply individual functions to summarise the value at
+# each x:
+d + stat_summary(fun.y = &#34;median&#34;, colour = &#34;red&#34;, size = 2)
+</div>
+<strong class="warning">Warning message:
+Removed 3 rows containing missing values (geom_pointrange).</strong>
+<p><img src="stat_summary-5.png" alt="" width="540" height="400"/></p>
+<div class="input">d + stat_summary(fun.y = &#34;mean&#34;, colour = &#34;red&#34;, size = 2)
+</div>
+<strong class="warning">Warning message:
+Removed 3 rows containing missing values (geom_pointrange).</strong>
+<p><img src="stat_summary-8.png" alt="" width="540" height="400"/></p>
+<div class="input">d + aes(colour = factor(vs)) + stat_summary(fun.y = mean, geom=&#34;line&#34;)
+</div>
+<p><img src="stat_summary-10.png" alt="" width="540" height="400"/></p>
+<div class="input">
+d + stat_summary(fun.y = mean, fun.ymin = min, fun.ymax = max,
+  colour = &#34;red&#34;)
+</div>
+<p><img src="stat_summary-12.png" alt="" width="540" height="400"/></p>
+<div class="input">
+#&#39; d &lt;- ggplot(diamonds, aes(carat, price))
+d + geom_smooth()
+</div>
+<strong class="warning">Warning message:
+pseudoinverse used at 3.98</strong>
+<strong class="warning">Warning message:
+neighborhood radius 4.02</strong>
+<strong class="warning">Warning message:
+reciprocal condition number  1.0028e-16</strong>
+<strong class="warning">Warning message:
+There are other near singularities as well. 16.16</strong>
+<strong class="warning">Warning message:
+pseudoinverse used at 3.98</strong>
+<strong class="warning">Warning message:
+neighborhood radius 4.02</strong>
+<strong class="warning">Warning message:
+reciprocal condition number  1.0028e-16</strong>
+<strong class="warning">Warning message:
+There are other near singularities as well. 16.16</strong>
+<p><img src="stat_summary-22.png" alt="" width="540" height="400"/></p>
+<div class="input">d + geom_line(stat = &#34;summary_bin&#34;, binwidth = 0.1, fun.y = &#34;mean&#34;)
+</div>
+<p><img src="stat_summary-24.png" alt="" width="540" height="400"/></p>
+<div class="input">
+d &lt;- ggplot(diamonds, aes(cut))
+d + geom_bar()
+</div>
+<p><img src="stat_summary-26.png" alt="" width="540" height="400"/></p>
+<div class="input">d + stat_summary_bin(aes(y = price), fun.y = &#34;mean&#34;, geom = &#34;bar&#34;)
+</div>
+<p><img src="stat_summary-28.png" alt="" width="540" height="400"/></p>
+<div class="input">
+# A set of useful summary functions is provided from the Hmisc package:
+stat_sum_df &lt;- function(fun, geom=&#34;crossbar&#34;, ...) {
+  stat_summary(fun.data=fun, colour=&#34;red&#34;, geom=geom, width=0.2, ...)
+}
+
+# Don&#39;t use ylim to zoom into a summary plot - this throws the
+# data away
+p &lt;- ggplot(mtcars, aes(cyl, mpg)) +
+  stat_summary(fun.y = &#34;mean&#34;, geom = &#34;point&#34;)
+p
+</div>
+<p><img src="stat_summary-30.png" alt="" width="540" height="400"/></p>
+<div class="input">p + ylim(15, 30)
+</div>
+<strong class="warning">Warning message:
+Removed 9 rows containing non-finite values (stat_summary).</strong>
+<p><img src="stat_summary-33.png" alt="" width="540" height="400"/></p>
+<div class="input"># Instead use coord_cartesian
+p + coord_cartesian(ylim = c(15, 30))
+</div>
+<p><img src="stat_summary-35.png" alt="" width="540" height="400"/></p>
+<div class="input">
+# The crossbar geom needs grouping to be specified when used with
+# a continuous x axis.
+d + stat_sum_df(&#34;mean_cl_boot&#34;, mapping = aes(group = cyl))
+</div>
+<strong class="error">Error in eval(expr, envir, enclos): object &#39;cyl&#39; not found</strong>
+<div class="input">d + stat_sum_df(&#34;mean_sdl&#34;, mapping = aes(group = cyl))
+</div>
+<strong class="error">Error in eval(expr, envir, enclos): object &#39;cyl&#39; not found</strong>
+<div class="input">d + stat_sum_df(&#34;mean_sdl&#34;, mult = 1, mapping = aes(group = cyl))
+</div>
+<strong class="error">Error: Unknown parameters: mult</strong>
+<div class="input">d + stat_sum_df(&#34;median_hilow&#34;, mapping = aes(group = cyl))
+</div>
+<strong class="error">Error in eval(expr, envir, enclos): object &#39;cyl&#39; not found</strong>
+<div class="input">
+# There are lots of different geoms you can use to display the summaries
+
+d + stat_sum_df(&#34;mean_cl_normal&#34;, mapping = aes(group = cyl))
+</div>
+<strong class="error">Error in eval(expr, envir, enclos): object &#39;cyl&#39; not found</strong>
+<div class="input">d + stat_sum_df(&#34;mean_cl_normal&#34;, geom = &#34;errorbar&#34;)
+</div>
+<strong class="warning">Warning message:
+is.na() applied to non-(list or vector) of type &#39;NULL&#39;</strong>
+<strong class="warning">Warning message:
+argument is not numeric or logical: returning NA</strong>
+<strong class="warning">Warning message:
+is.na() applied to non-(list or vector) of type &#39;NULL&#39;</strong>
+<strong class="warning">Warning message:
+argument is not numeric or logical: returning NA</strong>
+<strong class="warning">Warning message:
+is.na() applied to non-(list or vector) of type &#39;NULL&#39;</strong>
+<strong class="warning">Warning message:
+argument is not numeric or logical: returning NA</strong>
+<strong class="warning">Warning message:
+is.na() applied to non-(list or vector) of type &#39;NULL&#39;</strong>
+<strong class="warning">Warning message:
+argument is not numeric or logical: returning NA</strong>
+<strong class="warning">Warning message:
+is.na() applied to non-(list or vector) of type &#39;NULL&#39;</strong>
+<strong class="warning">Warning message:
+argument is not numeric or logical: returning NA</strong>
+<strong class="error">Error in seq.default(from = best$lmin, to = best$lmax, by = best$lstep): &#39;from&#39; must be of length 1</strong>
+<div class="input">d + stat_sum_df(&#34;mean_cl_normal&#34;, geom = &#34;pointrange&#34;)
+</div>
+<strong class="error">Error: Unknown parameters: width</strong>
+<div class="input">d + stat_sum_df(&#34;mean_cl_normal&#34;, geom = &#34;smooth&#34;)
+</div>
+<strong class="error">Error: Unknown parameters: width</strong>
+<div class="input">
+# Summaries are more useful with a bigger data set:
+mpg2 &lt;- subset(mpg, cyl != 5L)
+m &lt;- ggplot(mpg2, aes(x=cyl, y=hwy)) +
+        geom_point() +
+        stat_summary(fun.data = &#34;mean_sdl&#34;, geom = &#34;linerange&#34;,
+                     colour = &#34;red&#34;, size = 2, mult = 1) +
+       xlab(&#34;cyl&#34;)
+</div>
+<strong class="error">Error: Unknown parameters: mult</strong>
+<div class="input">m
+</div>
+<strong class="error">Error in eval(expr, envir, enclos): object &#39;m&#39; not found</strong>
+<div class="input"># An example with highly skewed distributions:
+if (require(&#34;ggplot2movies&#34;)) {
+set.seed(596)
+mov &lt;- movies[sample(nrow(movies), 1000), ]
+ m2 &lt;- ggplot(mov, aes(x= factor(round(rating)), y=votes)) + geom_point()
+ m2 &lt;- m2 + stat_summary(fun.data = &#34;mean_cl_boot&#34;, geom = &#34;crossbar&#34;,
+                         colour = &#34;red&#34;, width = 0.3) + xlab(&#34;rating&#34;)
+m2
+# Notice how the overplotting skews off visual perception of the mean
+# supplementing the raw data with summary statistics is _very_ important
+
+# Next, we&#39;ll look at votes on a log scale.
+
+# Transforming the scale means the data are transformed
+# first, after which statistics are computed:
+m2 + scale_y_log10()
+# Transforming the coordinate system occurs after the
+# statistic has been computed. This means we&#39;re calculating the summary on the raw data
+# and stretching the geoms onto the log scale.  Compare the widths of the
+# standard errors.
+m2 + coord_trans(y=&#34;log10&#34;)
+}
+</div>
+<strong class="message">Loading required package: ggplot2movies</strong>
+<strong class="warning">Warning message:
+there is no package called ‘ggplot2movies’</strong>
+<div class="input"></div></pre>
+  </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>stat_summary</li><li>stat_summary_bin</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+      
+    <h2>See also</h2>
+    
+<code><a class="dashingAutolink" name="autolink-553"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/geom_errorbar"></a><a href="geom_linerange.html">geom_errorbar</a></code>, <code><a class="dashingAutolink" name="autolink-554"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/geom_pointrange"></a><a href="geom_linerange.html">geom_pointrange</a></code>,
+ <code><a class="dashingAutolink" name="autolink-555"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/geom_linerange"></a><a href="geom_linerange.html">geom_linerange</a></code>, <code><a class="dashingAutolink" name="autolink-556"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/geom_crossbar"></a><a href="geom_linerange.html">geom_crossbar</a></code> for geoms to
+ display summarised data
+
+        
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+
+<p class="feedback">What do you think of the documentation?  <a href="http://hadley.wufoo.com/forms/documentation-feedback/def/field0=stat_summary_bin">Please let me know by filling out this short online survey</a>.</p>
+
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  
+</body></html>

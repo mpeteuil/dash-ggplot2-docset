@@ -1,0 +1,153 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8"/>
+<title>scale_manual. ggplot2 1.0.1.9003</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="author" content=""/>
+
+<link href="css/bootstrap.css" rel="stylesheet"/>
+<link href="css/bootstrap-responsive.css" rel="stylesheet"/>
+<link href="css/highlight.css" rel="stylesheet"/>
+<link href="css/staticdocs.css" rel="stylesheet"/>
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-67989-15']);
+  _gaq.push(['_setDomainName', 'ggplot2.org']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">ggplot2 1.0.1.9003</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Create your own discrete scale.</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><div>scale_colour_manual(..., values)</div>
+<div>scale_fill_manual(..., values)</div>
+<div>scale_size_manual(..., values)</div>
+<div>scale_shape_manual(..., values)</div>
+<div>scale_linetype_manual(..., values)</div>
+<div>scale_alpha_manual(..., values)</div></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>...</dt>
+      <dd>common discrete scale parameters: <code>name</code>, <code>breaks</code>,
+<code>labels</code>, <code>na.value</code>, <code>limits</code> and <code>guide</code>.  See
+<code><a class="dashingAutolink" name="autolink-517"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/discrete_scale"></a><a href="discrete_scale.html">discrete_scale</a></code> for more details</dd>
+      <dt>values</dt>
+      <dd>a set of aesthetic values to map data values to.  If this
+is a named vector, then the values will be matched based on the names.
+If unnamed, values will be matched in order (usually alphabetical) with
+the limits of the scale.  Any data values that don&#39;t match will be
+given <code>na.value</code>.</dd>
+    </dl>
+    
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Create your own discrete scale.</p>
+  
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class="input">
+p &lt;- ggplot(mtcars, aes(mpg, wt)) +
+  geom_point(aes(colour = factor(cyl)))
+
+p + scale_colour_manual(values = c(&#34;red&#34;,&#34;blue&#34;, &#34;green&#34;))
+</div>
+<p><img src="scale_manual-2.png" alt="" width="540" height="400"/></p>
+<div class="input">p + scale_colour_manual(
+  values = c(&#34;8&#34; = &#34;red&#34;,&#34;4&#34; = &#34;blue&#34;,&#34;6&#34; = &#34;green&#34;))
+</div>
+<p><img src="scale_manual-4.png" alt="" width="540" height="400"/></p>
+<div class="input"># With rgb hex values
+p + scale_colour_manual(values = c(&#34;#FF0000&#34;, &#34;#0000FF&#34;, &#34;#00FF00&#34;))
+</div>
+<p><img src="scale_manual-6.png" alt="" width="540" height="400"/></p>
+<div class="input">
+# As with other scales you can use breaks to control the appearance
+# of the legend
+cols &lt;- c(&#34;8&#34; = &#34;red&#34;,&#34;4&#34; = &#34;blue&#34;,&#34;6&#34; = &#34;darkgreen&#34;, &#34;10&#34; = &#34;orange&#34;)
+p + scale_colour_manual(values = cols)
+</div>
+<p><img src="scale_manual-8.png" alt="" width="540" height="400"/></p>
+<div class="input">p + scale_colour_manual(values = cols, breaks = c(&#34;4&#34;, &#34;6&#34;, &#34;8&#34;))
+</div>
+<p><img src="scale_manual-10.png" alt="" width="540" height="400"/></p>
+<div class="input">p + scale_colour_manual(values = cols, breaks = c(&#34;8&#34;, &#34;6&#34;, &#34;4&#34;))
+</div>
+<p><img src="scale_manual-12.png" alt="" width="540" height="400"/></p>
+<div class="input">p + scale_colour_manual(values = cols, breaks = c(&#34;4&#34;, &#34;6&#34;, &#34;8&#34;),
+  labels = c(&#34;four&#34;, &#34;six&#34;, &#34;eight&#34;))
+</div>
+<p><img src="scale_manual-14.png" alt="" width="540" height="400"/></p>
+<div class="input">
+# And limits to control the possible values of the scale
+p + scale_colour_manual(values = cols, limits = c(&#34;4&#34;, &#34;8&#34;))
+</div>
+<p><img src="scale_manual-16.png" alt="" width="540" height="400"/></p>
+<div class="input">p + scale_colour_manual(values = cols, limits = c(&#34;4&#34;, &#34;6&#34;, &#34;8&#34;, &#34;10&#34;))
+</div>
+<p><img src="scale_manual-18.png" alt="" width="540" height="400"/></p>
+<div class="input">
+# Notice that the values are matched with limits, and not breaks
+p + scale_colour_manual(limits = c(6, 8, 4), breaks = c(8, 4, 6),
+  values = c(&#34;grey50&#34;, &#34;grey80&#34;, &#34;black&#34;))
+</div>
+<p><img src="scale_manual-20.png" alt="" width="540" height="400"/></p>
+<div class="input"></div></pre>
+  </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>scale_alpha_manual</li><li>scale_color_manual</li><li>scale_colour_manual</li><li>scale_fill_manual</li><li>scale_linetype_manual</li><li>scale_manual</li><li>scale_shape_manual</li><li>scale_size_manual</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+      
+        
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+
+<p class="feedback">What do you think of the documentation?  <a href="http://hadley.wufoo.com/forms/documentation-feedback/def/field0=scale_manual">Please let me know by filling out this short online survey</a>.</p>
+
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  
+</body></html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="utf-8"/>
+<title>geom_density2d. ggplot2 1.0.1.9003</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="author" content=""/>
+
+<link href="css/bootstrap.css" rel="stylesheet"/>
+<link href="css/bootstrap-responsive.css" rel="stylesheet"/>
+<link href="css/highlight.css" rel="stylesheet"/>
+<link href="css/staticdocs.css" rel="stylesheet"/>
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-67989-15']);
+  _gaq.push(['_setDomainName', 'ggplot2.org']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="#">ggplot2 1.0.1.9003</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html"><i class="icon-home icon-white"></i> Index</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>Contours from a 2d density estimate.</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><div>geom_density2d(mapping = NULL, data = NULL, stat = &#34;density2d&#34;, position = &#34;identity&#34;, lineend = &#34;butt&#34;, linejoin = &#34;round&#34;, linemitre = 1, na.rm = FALSE, show.legend = NA, inherit.aes = TRUE, ...)</div>
+<div>stat_density2d(mapping = NULL, data = NULL, geom = &#34;density2d&#34;, position = &#34;identity&#34;, na.rm = FALSE, contour = TRUE, n = 100, h = NULL, show.legend = NA, inherit.aes = TRUE, ...)</div></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>mapping</dt>
+      <dd>Set of aesthetic mappings created by <code><a class="dashingAutolink" name="autolink-100"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/aes"></a><a href="aes.html">aes</a></code> or
+<code><a class="dashingAutolink" name="autolink-101"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/aes_"></a><a href="aes_.html">aes_</a></code>. If specified and <code>inherit.aes = TRUE</code> (the
+default), is combined with the default mapping at the top level of the
+plot. You only need to supply <code>mapping</code> if there isn&#39;t a mapping
+defined for the plot.</dd>
+      <dt>data</dt>
+      <dd>A data frame. If specified, overrides the default data frame
+defined at the top level of the plot.</dd>
+      <dt>position</dt>
+      <dd>Position adjustment, either as a string, or the result of
+a call to a position adjustment function.</dd>
+      <dt>lineend</dt>
+      <dd>Line end style (round, butt, square)</dd>
+      <dt>linejoin</dt>
+      <dd>Line join style (round, mitre, bevel)</dd>
+      <dt>linemitre</dt>
+      <dd>Line mitre limit (number greater than 1)</dd>
+      <dt>na.rm</dt>
+      <dd>If <code>FALSE</code> (the default), removes missing values with
+a warning.  If <code>TRUE</code> silently removes missing values.</dd>
+      <dt>show.legend</dt>
+      <dd>logical. Should this layer be included in the legends?
+<code>NA</code>, the default, includes if any aesthetics are mapped.
+<code>FALSE</code> never includes, and <code>TRUE</code> always includes.</dd>
+      <dt>inherit.aes</dt>
+      <dd>If <code>FALSE</code>, overrides the default aesthetics,
+rather than combining with them. This is most useful for helper functions
+that define both data and aesthetics and shouldn&#39;t inherit behaviour from
+the default plot specification, e.g. <code><a class="dashingAutolink" name="autolink-102"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/borders"></a><a href="borders.html">borders</a></code>.</dd>
+      <dt>...</dt>
+      <dd>other arguments passed on to <code><a class="dashingAutolink" name="autolink-103"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/layer"></a><a href="layer.html">layer</a></code>. There are
+  three types of arguments you can use here:
+
+  <ul>
+<li> Aesthetics: to set an aesthetic to a fixed value, like
+     <code>color = &#34;red&#34;</code> or <code>size = 3</code>.
+  </li>
+<li> Other arguments to the layer, for example you override the
+    default <code>stat</code> associated with the layer.
+  </li>
+<li> Other arguments passed on to the stat.
+  </li>
+</ul>
+</dd>
+      <dt>geom,stat</dt>
+      <dd>Use to override the default connection between
+<code>geom_density2d</code> and <code>stat_density2d</code>.</dd>
+      <dt>contour</dt>
+      <dd>If <code>TRUE</code>, contour the results of the 2d density
+estimation</dd>
+      <dt>n</dt>
+      <dd>number of grid points in each direction</dd>
+      <dt>h</dt>
+      <dd>Bandwidth (vector of length two). If <code>NULL</code>, estimated
+using <code><a class="dashingAutolink" name="autolink-104"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/bandwidth.nrd"></a><a href="http://www.inside-r.org/r-doc/MASS/bandwidth.nrd">bandwidth.nrd</a></code>.</dd>
+    </dl>
+    
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>Perform a 2D kernel density estimation using kde2d and display the
+results with contours. This can be useful for dealing with overplotting.</p>
+  
+    </div>
+
+    <div class="Aesthetics">
+      <h2>Aesthetics</h2>
+
+      <p></p>
+  
+      <p><code>geom_density2d</code> understands the following aesthetics (required aesthetics are in bold):</p>
+  
+      <p></p><ul>
+<li> <code><strong>x</strong></code>
+  </li>
+<li> <code><strong>y</strong></code>
+  </li>
+<li> <code>alpha</code>
+  </li>
+<li> <code>colour</code>
+  </li>
+<li> <code>linetype</code>
+  </li>
+<li> <code>size</code>
+</li>
+</ul><p></p>
+  
+      <p></p>
+  
+    </div>
+
+    <div class="Computed variables">
+      <h2>Computed variables</h2>
+
+      <p></p>
+  
+      <p>Same as <code><a class="dashingAutolink" name="autolink-105"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/stat_contour"></a><a href="geom_contour.html">stat_contour</a></code></p>
+  
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class="input">m &lt;- ggplot(faithful, aes(x = eruptions, y = waiting)) +
+ geom_point() +
+ xlim(0.5, 6) +
+ ylim(40, 110)
+m + geom_density2d()
+</div>
+<p><img src="geom_density2d-2.png" alt="" width="540" height="400"/></p>
+<div class="input">
+m + stat_density2d(aes(fill = ..level..), geom = &#34;polygon&#34;)
+</div>
+<p><img src="geom_density2d-4.png" alt="" width="540" height="400"/></p>
+<div class="input">
+# If you map an aesthetic to a categorical variable, you will get a
+# set of contours for each value of that variable
+set.seed(4393)
+dsmall &lt;- diamonds[sample(nrow(diamonds), 1000), ]
+d &lt;- ggplot(dsmall, aes(x, y)) + geom_density2d(aes(colour = cut))
+d
+</div>
+<p><img src="geom_density2d-6.png" alt="" width="540" height="400"/></p>
+<div class="input">
+# If we turn contouring off, we can use use geoms like tiles:
+d + stat_density2d(geom = &#34;raster&#34;, aes(fill = ..density..), contour = FALSE)
+</div>
+<p><img src="geom_density2d-8.png" alt="" width="540" height="400"/></p>
+<div class="input"># Or points:
+d + stat_density2d(geom = &#34;point&#34;, aes(size = ..density..), n = 20, contour = FALSE)
+</div>
+<p><img src="geom_density2d-10.png" alt="" width="540" height="400"/></p>
+<div class="input"></div></pre>
+  </div>
+  <div class="span4">
+    <!-- <ul>
+      <li>geom_density2d</li><li>stat_density2d</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+      
+    <h2>See also</h2>
+    
+<code><a class="dashingAutolink" name="autolink-106"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/geom_contour"></a><a href="geom_contour.html">geom_contour</a></code> for contour drawing geom,
+ <code><a class="dashingAutolink" name="autolink-107"></a><a class="dashAnchor" name="//apple_ref/cpp/Function/stat_sum"></a><a href="geom_count.html">stat_sum</a></code> for another way of dealing with overplotting
+
+        
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+
+<p class="feedback">What do you think of the documentation?  <a href="http://hadley.wufoo.com/forms/documentation-feedback/def/field0=geom_density2d">Please let me know by filling out this short online survey</a>.</p>
+
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="http://twitter.github.com/bootstrap">bootstrap</a>.</p>
+      </footer>
+    </div>
+  
+</body></html>
